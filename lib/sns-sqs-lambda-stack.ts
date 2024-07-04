@@ -12,9 +12,35 @@ export class SnsSqsLambdaStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    const dlqLambda = new NodejsFunction(this, 'lambda-dlq-sqs-emi-cdk-que', {
+      functionName: 'lambda-dlq-sqs-emi-cdk-que',
+      runtime: Lambda.Runtime.NODEJS_20_X,
+      handler: 'handler',
+      entry: path.join(
+        __dirname,
+        '..',
+        'src',
+        'lambdas',
+        'lambda-dlq-sqs',
+        'handler.ts'
+      ),
+    });
+
+    const deadLetterQueue = new sqs.Queue(this, 'dlg-sqs-emi-cdk-que', {
+      queueName: 'dlg-sqs-emi-cdk-que',
+      retentionPeriod: cdk.Duration.minutes(30),
+    });
+
+    dlqLambda.addEventSource(new SqsEventSource(deadLetterQueue));
+
     const queue = new sqs.Queue(this, 'sqs-emi-cdk-que', {
       queueName: 'sqs-emi-cdk-que',
+      deadLetterQueue: {
+        queue: deadLetterQueue,
+        maxReceiveCount: 1,
+      },
     });
+
     const topic = new sns.Topic(this, 'sns-emi-cdk-topic', {
       topicName: 'sns-emi-cdk-topic',
     });

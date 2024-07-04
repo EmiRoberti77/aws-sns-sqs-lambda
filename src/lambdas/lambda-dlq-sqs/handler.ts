@@ -3,7 +3,6 @@ import { APIGatewayProxyResultV2, SQSEvent } from 'aws-lambda';
 export const handler = async (
   event: SQSEvent
 ): Promise<APIGatewayProxyResultV2> => {
-  throw new Error('throwing error to force messages in dlq');
   const messages = event.Records.map((record) => {
     const body = JSON.parse(record.body) as {
       Subject: string;
