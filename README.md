@@ -1,8 +1,10 @@
-# Welcome to your CDK TypeScript project
+SQS Example in AWS CDK [SNS, Lambda, DLQ] - Complete Guide
 
-This is a blank project for CDK development with TypeScript.
+Create an SQS queue in AWS CDK
+SQS Queue Event Source for a Lambda Function in AWS CDK
+Creating an SQS Dead Letter Queue in AWS CDK
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+reate an SQS queue that receives messages from an SNS topic. Once our SQS queue receives a message, a Lambda function is triggered.
 
 ## Useful commands
 
