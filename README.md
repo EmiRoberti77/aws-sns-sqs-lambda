@@ -8,6 +8,8 @@ Create an SQS queue that receives messages from an SNS topic. Once our SQS queue
 
 if error or a message can not be processed from the main que it will be placed in the dead letter queue to be process or handled
 
+Branch: SNS-SQS-LAMBDA ( contains implementation for SNS topic SQS subscribes to SNS and SQS triggers a lambda)
+
 ## Useful commands
 
 - `npm run build` compile typescript to js

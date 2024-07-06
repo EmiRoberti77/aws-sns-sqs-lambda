@@ -1,1 +1,6 @@
+SNS-SQS-DLQ
 https://bobbyhadz.com/blog/aws-cdk-sqs-sns-lambda
+
+SNS design patterns
+https://medium.com/@TomKeeber/top-sns-aws-design-patterns-19b6acc82017
+
