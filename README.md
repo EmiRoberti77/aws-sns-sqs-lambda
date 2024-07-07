@@ -5,10 +5,13 @@ SQS Queue Event Source for a Lambda Function in AWS CDK
 Creating an SQS Dead Letter Queue in AWS CDK
 
 Create an SQS queue that receives messages from an SNS topic. Once our SQS queue receives a message, a Lambda function is triggered.
-
 if error or a message can not be processed from the main que it will be placed in the dead letter queue to be process or handled
 
 Branch: SNS-SQS-LAMBDA ( contains implementation for SNS topic SQS subscribes to SNS and SQS triggers a lambda)
+
+![SNS-SQS-Lambda](https://github.com/EmiRoberti77/aws-sns-sqs-lambda/assets/114434826/5e029d5c-6f83-4bd8-866d-1c35d0336ad0)
+
+
 
 ## Useful commands
 
